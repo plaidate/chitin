@@ -1,5 +1,7 @@
 # Fightin' Chitin
 
+> Part of **[plAIdate](https://plaidate.github.io)** — AI-built 1-bit games, ports, and engines for the Playdate.
+
 A one-on-one 2D fighting game for the Playdate, starring the insect world's
 real brawlers. Two attack buttons keep it approachable; motion inputs and the
 **crank** give it a deep special-move layer. Six fighters (plus an unlockable
