@@ -1,6 +1,7 @@
 name=Fightin' Chitin
-author=sdwfrost
+author=Simon Frost
 description=Insect fighting game for Playdate. Six real-world brawlers, two-button combat, crank-fueled specials.
 bundleID=com.sdwfrost.chitin
 version=0.1
-buildNumber=1
+buildNumber=2
+imagePath=launcher
