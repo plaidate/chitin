@@ -75,12 +75,21 @@ function Hud.draw()
     healthBar(6, p1.hp / (p1.maxHp or C.MAX_HP), false)
     healthBar(C.W - 6 - BAR_W, p2.hp / (p2.maxHp or C.MAX_HP), true)
 
-    -- fighter names in the bottom corners
-    local n1 = (p1.def and p1.def.name) or "P1"
-    local n2 = (p2.def and p2.def.name) or "P2"
+    -- fighter names in the bottom corners, on white chips sized from the font
+    -- metrics (the raw draw at C.H-16 clipped: the system font is ~20px tall)
+    local function nameTag(txt, x, rightAlign)
+        local w, h = gfx.getTextSize(txt)
+        local bx = rightAlign and (x - w - 6) or x
+        local by = C.H - h - 2
+        gfx.setColor(gfx.kColorWhite)
+        gfx.fillRect(bx, by, w + 6, h + 2)
+        gfx.setColor(gfx.kColorBlack)
+        gfx.drawRect(bx, by, w + 6, h + 2)
+        gfx.drawText(txt, bx + 3, by + 1)
+    end
     gfx.setImageDrawMode(gfx.kDrawModeCopy)
-    gfx.drawTextAligned(n1, 6, C.H - 16, kTextAlignment.left)
-    gfx.drawTextAligned(n2, C.W - 6, C.H - 16, kTextAlignment.right)
+    nameTag((p1.def and p1.def.name) or "P1", 6, false)
+    nameTag((p2.def and p2.def.name) or "P2", C.W - 6, true)
 
     frenzyBar(6, p1.frenzy or 0, false)
     frenzyBar(C.W - 6 - FR_W, p2.frenzy or 0, true)
